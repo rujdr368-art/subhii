@@ -1,0 +1,788 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-brand-primary: #FF3030;
+  --color-brand-primary-hover: #E02424;
+  --color-brand-blue: #FF3030;
+  --color-brand-purple: #FF3030;
+  --color-dark-bg: #101010;
+  --color-card-dark: #1C1C1C;
+  --color-border-dark: #2A2A2A;
+}
+
+:root {
+  --theme-bg: #101010;
+  --theme-card-bg: #1C1C1C;
+  --theme-border: #2A2A2A;
+  --theme-primary: #FF3030;
+  --theme-primary-hover: #E02424;
+  --theme-text: #F5F5F5;
+  --theme-glow-color: rgba(255, 48, 48, 0.16);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Custom styles for bold, premium trustysmm dashboard */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #101010;
+  color: var(--theme-text, #F5F5F5);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Touch-friendly scrolling & utility classes */
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar,
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Smooth horizontal touch scroll containers for mobile & tablet */
+.touch-scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+/* Responsive Table Wrapper */
+.responsive-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+/* Mobile Touch Target minimum sizing */
+@media (max-width: 640px) {
+  button, input, select, textarea, a {
+    min-height: 38px;
+  }
+}
+
+[data-theme="dark"] {
+  background-color: #101010 !important;
+  color: #F5F5F5 !important;
+}
+
+/* Premium WebKit scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #101010;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A2A2A;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF3030;
+}
+
+/* Premium Card utilities: #1C1C1C with #2A2A2A border */
+.glass-card {
+  background: #1C1C1C;
+  backdrop-filter: blur(12px);
+  border: 1px solid #2A2A2A;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.glass-card-hover:hover {
+  border-color: #FF3030;
+  box-shadow: 0 0 24px rgba(255, 48, 48, 0.14);
+}
+
+/* Radial ambient glow gradients */
+.ambient-glow-purple {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--theme-glow-color, rgba(124, 58, 237, 0.15)) 0%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.ambient-glow-blue {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--theme-glow-color, rgba(37, 99, 235, 0.15)) 0%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+/* Active navigation link accent glow */
+.nav-glow {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Custom keyframes & animation helpers */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   TrustySMM Bold Red Branding Specifications:
+   - Background: #101010
+   - Primary Color: #FF3030
+   - Cards: #1C1C1C
+   - Borders: #2A2A2A
+   - Buttons: Red (#FF3030, hover #E02424)
+   - Style: Bold, premium, powerful
+   ========================================================================== */
+.bg-\[\#0D0F12\],
+.bg-\[\#101216\] {
+  background-color: #101010 !important;
+}
+
+.bg-\[\#15181E\] {
+  background-color: #1C1C1C !important;
+}
+
+.bg-\[\#191C22\],
+.bg-\[\#111318\] {
+  background-color: #141414 !important;
+}
+
+.border-\[\#272B33\] {
+  border-color: #2A2A2A !important;
+}
+
+.bg-red-600 {
+  background-color: #FF3030 !important;
+}
+
+.hover\:bg-red-700:hover {
+  background-color: #E02424 !important;
+}
+
+.text-red-600 {
+  color: #FF3030 !important;
+}
+
+.hover\:text-red-600:hover {
+  color: #FF3030 !important;
+}
+
+.border-red-600 {
+  border-color: #FF3030 !important;
+}
+
+.focus\:border-red-600:focus {
+  border-color: #FF3030 !important;
+}
+
+.focus\:ring-red-500:focus,
+.focus\:ring-red-600:focus {
+  --tw-ring-color: #FF3030 !important;
+}
+
+/* ==========================================================================
+   Admin Panel Light & Dark Theme Overrides (Synced with User Panel)
+   ========================================================================== */
+
+/* Outer structure transition and overrides for Light Mode */
+.admin-panel-light {
+  background-color: #ece9e9 !important;
+  color: #1f2937 !important;
+}
+
+/* Sidebar structure */
+.admin-panel-light aside {
+  background-color: #f4f2f2 !important;
+  border-color: rgba(209, 213, 219, 0.8) !important;
+}
+
+.admin-panel-light aside button {
+  color: #4b5563 !important;
+}
+
+.admin-panel-light aside button:hover {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+}
+
+/* Active sidebar item */
+.admin-panel-light aside button.bg-purple-600\/10 {
+  background-color: rgba(124, 58, 237, 0.1) !important;
+  color: #7c3aed !important;
+  border-left-color: #7c3aed !important;
+}
+
+/* Main page header card */
+.admin-panel-light .mb-8.bg-\[\#0a0f1d\],
+.admin-panel-light .mb-8.bg-\[\#13192b\],
+.admin-panel-light .mb-8.bg-slate-900\/50 {
+  background-color: #ffffff !important;
+  border-color: #e5e7eb !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Status clusters in header */
+.admin-panel-light .bg-\[\#030712\],
+.admin-panel-light .bg-\[\#0e1320\],
+.admin-panel-light .bg-black\/40 {
+  background-color: #f4f2f2 !important;
+  border-color: #d1d5db !important;
+  color: #374151 !important;
+}
+
+/* Standard cards and glass container overrides in Light Mode */
+.admin-panel-light .glass-card,
+.admin-panel-light .bg-\[\#111827\],
+.admin-panel-light .bg-\[\#0f172a\],
+.admin-panel-light .bg-\[\#0b101f\],
+.admin-panel-light .bg-\[\#1e293b\],
+.admin-panel-light .bg-\[\#0f1527\],
+.admin-panel-light .bg-\[\#090d1a\],
+.admin-panel-light .bg-\[\#0a0f1d\],
+.admin-panel-light .bg-\[\#13192b\],
+.admin-panel-light .bg-\[\#182238\],
+.admin-panel-light .bg-\[\#1a2236\],
+.admin-panel-light .bg-white\/5 {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  border-color: #e5e7eb !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Outer structure transition and overrides for Dark Mode */
+.admin-panel-dark {
+  background-color: #101010 !important;
+  color: #F5F5F5 !important;
+}
+
+.admin-panel-dark aside {
+  background-color: #141414 !important;
+  border-color: #2A2A2A !important;
+}
+
+.admin-panel-dark .glass-card,
+.admin-panel-dark .bg-\[\#111827\],
+.admin-panel-dark .bg-\[\#0f172a\],
+.admin-panel-dark .bg-\[\#0b101f\],
+.admin-panel-dark .bg-\[\#090d1a\],
+.admin-panel-dark .bg-\[\#0a0f1d\],
+.admin-panel-dark .bg-\[\#030712\],
+.admin-panel-dark .bg-\[\#0e1528\],
+.admin-panel-dark .bg-\[\#0f1527\] {
+  background-color: #1C1C1C !important;
+  border-color: #2A2A2A !important;
+}
+
+.admin-panel-dark input,
+.admin-panel-dark select,
+.admin-panel-dark textarea {
+  background-color: #141414 !important;
+  border-color: #2A2A2A !important;
+  color: #F5F5F5 !important;
+}
+
+.admin-panel-dark table th {
+  background-color: #141414 !important;
+  border-color: #2A2A2A !important;
+}
+
+.admin-panel-dark table td {
+  border-color: #2A2A2A !important;
+}
+
+.admin-panel-dark table tr:hover {
+  background-color: #222222 !important;
+}
+
+/* ==========================================================================
+   Admin Panel Premium Red & Dark Theme (TrustySMM Red Brand Theme)
+   - Background Body: #101010
+   - Sidebar / Header: #141414
+   - Containers / Cards: #1C1C1C
+   - Inputs / Inner Wells / Table Header: #141414
+   - Borders: #2A2A2A
+   - Primary: #FF3030
+   - Text: #F5F5F5, Secondary: #A0A0A0
+   ========================================================================== */
+.admin-panel-espresso {
+  background-color: #101010 !important;
+  color: #F5F5F5 !important;
+}
+
+.admin-panel-espresso aside {
+  background-color: #141414 !important;
+  border-color: #2A2A2A !important;
+  color: #D6D6D6 !important;
+}
+
+.admin-panel-espresso aside button {
+  color: #A0A0A0 !important;
+}
+
+.admin-panel-espresso aside button:hover {
+  background-color: #222222 !important;
+  color: #FFFFFF !important;
+}
+
+.admin-panel-espresso .glass-card,
+.admin-panel-espresso .bg-\[\#111827\],
+.admin-panel-espresso .bg-\[\#0f172a\],
+.admin-panel-espresso .bg-\[\#0b101f\],
+.admin-panel-espresso .bg-\[\#090d1a\],
+.admin-panel-espresso .bg-\[\#0a0f1d\],
+.admin-panel-espresso .bg-\[\#030712\],
+.admin-panel-espresso .bg-\[\#0e1528\],
+.admin-panel-espresso .bg-\[\#0f1527\],
+.admin-panel-espresso .bg-\[\#13192b\],
+.admin-panel-espresso .bg-\[\#182238\],
+.admin-panel-espresso .bg-\[\#1a2236\],
+.admin-panel-espresso .bg-\[\#15181E\],
+.admin-panel-espresso .bg-\[\#1e1915\] {
+  background-color: #1C1C1C !important;
+  border-color: #2A2A2A !important;
+  color: #F5F5F5 !important;
+}
+
+.admin-panel-espresso .bg-\[\#191C22\],
+.admin-panel-espresso .bg-\[\#0D0F12\],
+.admin-panel-espresso .bg-\[\#181411\],
+.admin-panel-espresso .bg-black\/40,
+.admin-panel-espresso .bg-slate-900\/50 {
+  background-color: #141414 !important;
+  border-color: #2A2A2A !important;
+}
+
+.admin-panel-espresso input,
+.admin-panel-espresso select,
+.admin-panel-espresso textarea {
+  background-color: #141414 !important;
+  border-color: #2A2A2A !important;
+  color: #F5F5F5 !important;
+}
+
+.admin-panel-espresso input::placeholder,
+.admin-panel-espresso textarea::placeholder {
+  color: #707070 !important;
+}
+
+.admin-panel-espresso table th {
+  background-color: #141414 !important;
+  border-color: #2A2A2A !important;
+  color: #D6D6D6 !important;
+}
+
+.admin-panel-espresso table td {
+  border-color: #2A2A2A !important;
+  color: #E8E8E8 !important;
+}
+
+.admin-panel-espresso table tr:hover {
+  background-color: #222222 !important;
+}
+
+.admin-panel-espresso .border-\[\#272B33\],
+.admin-panel-espresso .border-\[\#382d25\],
+.admin-panel-espresso .border-\[\#352b25\],
+.admin-panel-espresso .border-gray-800,
+.admin-panel-espresso .border-white\/5,
+.admin-panel-espresso .border-white\/10,
+.admin-panel-espresso .border-white\/15,
+.admin-panel-espresso .border-white\/20 {
+  border-color: #2A2A2A !important;
+}
+
+.admin-panel-espresso .text-gray-400 {
+  color: #a89f97 !important;
+}
+
+.admin-panel-espresso .text-gray-500 {
+  color: #8a8078 !important;
+}
+
+.admin-panel-espresso .text-gray-300 {
+  color: #d5ccc4 !important;
+}
+
+.admin-panel-espresso .text-white {
+  color: #ffffff !important;
+}
+
+.admin-panel-espresso .text-gray-100 {
+  color: #f5f0eb !important;
+}
+
+.admin-panel-espresso .text-gray-200 {
+  color: #ebe3dc !important;
+}
+
+/* Borders mapping */
+.admin-panel-light .border-white\/5,
+.admin-panel-light .border-white\/10,
+.admin-panel-light .border-white\/20,
+.admin-panel-light .border-white\/15,
+.admin-panel-light .border-white\/25 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Global text contrast normalization */
+.admin-panel-light .text-white {
+  color: #0f172a !important;
+}
+
+.admin-panel-light .text-gray-100 {
+  color: #0f172a !important;
+}
+
+.admin-panel-light .text-gray-200 {
+  color: #1e293b !important;
+}
+
+.admin-panel-light .text-gray-300 {
+  color: #334155 !important;
+}
+
+.admin-panel-light .text-gray-400 {
+  color: #475569 !important;
+}
+
+.admin-panel-light .text-gray-500 {
+  color: #64748b !important;
+}
+
+/* Colorful text contrast mapping */
+.admin-panel-light .text-purple-400,
+.admin-panel-light .text-purple-300 {
+  color: #6d28d9 !important;
+}
+
+.admin-panel-light .text-blue-400,
+.admin-panel-light .text-blue-300 {
+  color: #1d4ed8 !important;
+}
+
+.admin-panel-light .text-emerald-400,
+.admin-panel-light .text-emerald-300 {
+  color: #047857 !important;
+}
+
+.admin-panel-light .text-amber-400,
+.admin-panel-light .text-amber-300 {
+  color: #b45309 !important;
+}
+
+.admin-panel-light .text-red-400,
+.admin-panel-light .text-red-300 {
+  color: #b91c1c !important;
+}
+
+.admin-panel-light .text-sky-400,
+.admin-panel-light .text-sky-300 {
+  color: #0369a1 !important;
+}
+
+.admin-panel-light .text-pink-400,
+.admin-panel-light .text-pink-300 {
+  color: #be185d !important;
+}
+
+.admin-panel-light .text-teal-400,
+.admin-panel-light .text-teal-300 {
+  color: #0f766e !important;
+}
+
+/* Background status pill mapping */
+.admin-panel-light .bg-purple-500\/10,
+.admin-panel-light .bg-purple-500\/20 {
+  background-color: rgba(109, 40, 217, 0.08) !important;
+  color: #6d28d9 !important;
+}
+
+.admin-panel-light .bg-blue-500\/10,
+.admin-panel-light .bg-blue-500\/20 {
+  background-color: rgba(29, 78, 216, 0.08) !important;
+  color: #1d4ed8 !important;
+}
+
+.admin-panel-light .bg-emerald-500\/10,
+.admin-panel-light .bg-emerald-500\/20 {
+  background-color: rgba(4, 120, 87, 0.08) !important;
+  color: #047857 !important;
+}
+
+.admin-panel-light .bg-red-500\/10,
+.admin-panel-light .bg-red-500\/20 {
+  background-color: rgba(185, 28, 28, 0.08) !important;
+  color: #b91c1c !important;
+}
+
+/* Form Controls & Inputs */
+.admin-panel-light input,
+.admin-panel-light select,
+.admin-panel-light textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+.admin-panel-light input::placeholder,
+.admin-panel-light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+.admin-panel-light input:focus,
+.admin-panel-light select:focus,
+.admin-panel-light textarea:focus {
+  border-color: #7c3aed !important;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.15) !important;
+}
+
+/* Table overrides */
+.admin-panel-light table {
+  border-color: #e2e8f0 !important;
+}
+
+.admin-panel-light table tr {
+  border-color: #f1f5f9 !important;
+}
+
+.admin-panel-light table tr:hover {
+  background-color: #f8fafc !important;
+}
+
+.admin-panel-light thead tr {
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+}
+
+.admin-panel-light table td {
+  border-color: #f1f5f9 !important;
+}
+
+.admin-panel-light table th {
+  color: #475569 !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Modals, Overlays and Dialog wrappers */
+.admin-panel-light .fixed.inset-0.bg-slate-900\/80,
+.admin-panel-light .fixed.inset-0.bg-black\/50,
+.admin-panel-light .fixed.inset-0.bg-\[\#000\]\/60 {
+  background-color: rgba(15, 23, 42, 0.45) !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+.admin-panel-light .fixed .bg-\[\#111827\],
+.admin-panel-light .fixed .bg-\[\#0a0f1d\],
+.admin-panel-light .fixed .bg-\[\#0f172a\] {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Recharts tooltip custom overrides */
+.admin-panel-light .recharts-default-tooltip {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #1e293b !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+}
+
+.admin-panel-light .recharts-tooltip-label {
+  color: #0f172a !important;
+  font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   TrustySMM Unified Theme: Red Obsidian (#101010, #1C1C1C, #FF3030)
+   ========================================================================== */
+[data-theme="light"],
+[data-theme="dark"],
+[data-theme="default"] {
+  background-color: #101010 !important;
+  color: #F5F5F5 !important;
+}
+
+[data-theme="light"] .glass-card,
+[data-theme="light"] .bg-\[\#111827\],
+[data-theme="light"] .bg-\[\#0f172a\],
+[data-theme="light"] .bg-\[\#0b101f\],
+[data-theme="light"] .bg-\[\#0e1528\],
+[data-theme="light"] .bg-\[\#090d1a\],
+[data-theme="light"] .bg-\[\#1e293b\],
+[data-theme="light"] .bg-\[\#0f1527\],
+[data-theme="light"] .bg-\[\#0a0f1d\],
+[data-theme="light"] .bg-\[\#15181E\] {
+  background-color: #1C1C1C !important;
+  border-color: #2A2A2A !important;
+}
+
+[data-theme="light"] .border-white\/5,
+[data-theme="light"] .border-white\/10,
+[data-theme="light"] .border-white\/20,
+[data-theme="light"] .border-white\/15,
+[data-theme="light"] .border-white\/25 {
+  border-color: #2A2A2A !important;
+}
+
+[data-theme="light"] input,
+[data-theme="light"] select,
+[data-theme="light"] textarea {
+  background-color: #141414 !important;
+  color: #F5F5F5 !important;
+  border-color: #2A2A2A !important;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #707070 !important;
+}
+
+[data-theme="light"] input:focus,
+[data-theme="light"] select:focus,
+[data-theme="light"] textarea:focus {
+  border-color: #FF3030 !important;
+  box-shadow: 0 0 0 2px rgba(255, 48, 48, 0.2) !important;
+}
+
+/* Platform Marquee Animation */
+@keyframes platform-marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-33.333333%);
+  }
+}
+
+.animate-platform-marquee {
+  display: flex;
+  width: max-content;
+  animation: platform-marquee-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+@media (max-width: 640px) {
+  .animate-platform-marquee {
+    animation-duration: 24s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-platform-marquee {
+    animation: none !important;
+  }
+}
+
+/* ========================================================================= */
+/* Cute Boy AI Chatbot Avatar Animations */
+/* ========================================================================= */
+@keyframes aiAvatarBlink {
+  0%, 88%, 100% {
+    transform: scaleY(1);
+  }
+  92%, 96% {
+    transform: scaleY(0.08);
+  }
+}
+
+.avatar-eyes-group {
+  animation: aiAvatarBlink 3.8s ease-in-out infinite;
+  transform-origin: 50px 43.5px;
+  will-change: transform;
+}
+
+@keyframes aiAvatarHeadGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  35% {
+    transform: translateY(-0.7px) rotate(0.8deg);
+  }
+  70% {
+    transform: translateY(0.4px) rotate(-0.6deg);
+  }
+}
+
+.avatar-head-group {
+  animation: aiAvatarHeadGentle 4.5s ease-in-out infinite;
+  transform-origin: 50px 52px;
+  will-change: transform;
+}
+
+@keyframes aiAvatarFloatingBreath {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.ai-launcher-floating {
+  animation: aiAvatarFloatingBreath 3.4s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes aiNewMessageBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  20% {
+    transform: translateY(-10px) scale(1.08);
+  }
+  40% {
+    transform: translateY(3px) scale(0.96);
+  }
+  60% {
+    transform: translateY(-5px) scale(1.04);
+  }
+  80% {
+    transform: translateY(1px) scale(0.99);
+  }
+}
+
+.ai-launcher-bounce {
+  animation: aiNewMessageBounce 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avatar-eyes-group,
+  .avatar-head-group,
+  .ai-launcher-floating,
+  .ai-launcher-bounce {
+    animation: none !important;
+  }
+}
+
+

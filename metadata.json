@@ -1,0 +1,6 @@
+{
+  "name": "trustysmm",
+  "description": "TrustySMM is the #1 main SMM provider and cheapest reseller panel in India. Instant automated delivery for Instagram followers, YouTube watch time, Telegram members & Facebook with 24/7 UPI & QR payments.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
